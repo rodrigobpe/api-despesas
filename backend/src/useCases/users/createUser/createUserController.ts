@@ -12,6 +12,7 @@ export default class CreateUserController{
 
         return res.status(HtppStatus.CREATED).json({
             message:"User created",
+            status_code:HtppStatus.CREATED,
             user
         })
     }

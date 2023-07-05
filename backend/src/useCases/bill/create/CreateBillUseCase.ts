@@ -4,7 +4,7 @@ import CreateBillDTO from "./CreateBillDTO";
 
 export default class CreateBillUseCase{
     constructor(private readonly billRepo:BillRepository){}
-    async execute({date,price,billId,title}:CreateBillDTO):Promise<Bill | unknown>{
-        return await this.billRepo.create({billId,date,price,title})
+    async execute({date,price,userId,title}:CreateBillDTO):Promise<Bill | unknown>{
+        return await this.billRepo.create({userId,date,price,title})
     }
 }

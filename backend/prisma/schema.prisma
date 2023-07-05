@@ -26,8 +26,8 @@ model Bill{
   price Float 
   title String? @db.VarChar(100)
   date DateTime @db.Timestamp()
-  User User @relation(fields: [billId],references: [id])
-  billId String @default(uuid())
+  User User @relation(fields: [userId],references: [id])
+  userId String @default(uuid())
 
   @@map("bill")
 }

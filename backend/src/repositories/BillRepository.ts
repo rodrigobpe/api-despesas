@@ -1,10 +1,10 @@
 import Bill from "../entities/Bill";
 
 export default interface BillRepository{
-    create({id,billId,date,price,title}:Bill):Promise<Bill | unknown>
+    create({id,userId,date,price,title}:Bill):Promise<Bill | unknown>
     getByID({id}:Partial<Bill>):Promise<Bill | null>
     getAll():Promise<Bill | null>
-    update({billId,date,id,price,title}:Partial<Bill>):Promise<Bill>
+    update({userId,date,id,price,title}:Partial<Bill>):Promise<Bill>
     delete({id}:Partial<Bill>):Promise<Bill>
-    getByUser({billId}:Partial<Bill>):Promise<Bill[] | unknown[]>
+    getByUser({userId}:Partial<Bill>):Promise<Bill[] | unknown[]>
 }

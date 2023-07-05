@@ -7,4 +7,5 @@ export default interface UserRepository{
     getAll():Promise<Partial<User>[] | null>
     delete({id}:Partial<User>):Promise<void>
     update({id,isAdmin,name,password}:Partial<User>):Promise<User>
+    
 }

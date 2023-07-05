@@ -12,6 +12,7 @@ export default class UpdateUserController{
 
         return res.status(HtppStatus.CREATED).json({
             message:"User updated",
+            status_code:HtppStatus.CREATED,
             user
         })
     }

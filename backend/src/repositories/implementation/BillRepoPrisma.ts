@@ -3,12 +3,12 @@ import Bill from "../../entities/Bill";
 import BillRepository from "../BillRepository";
 
 export default class BillRepoPrisma implements BillRepository{
-    async getByUser({ billId }: Partial<Bill>): Promise<Bill[] | unknown[]> {
-        return await db.bill.findMany({where:{billId}})
+    async getByUser({ userId }: Partial<Bill>): Promise<Bill[] | unknown[]> {
+        return await db.bill.findMany({where:{userId}})
     }
-    async create({ billId, date, price, title }: Bill): Promise<Bill | unknown> {
+    async create({ userId, date, price, title }: Bill): Promise<Bill | unknown> {
         return await db.bill.create({
-            data:{date,price,billId,title}
+            data:{date,price,userId,title}
         })
     }
     async getByID({ id }: Partial<Bill>): Promise<Bill> {
@@ -17,7 +17,7 @@ export default class BillRepoPrisma implements BillRepository{
     async getAll(): Promise<Bill> {
         throw new Error("Method not implemented.");
     }
-    async update({ billId, date, id, price, title }: Partial<Bill>): Promise<Bill> {
+    async update({ userId, date, id, price, title }: Partial<Bill>): Promise<Bill> {
         throw new Error("Method not implemented.");
     }
     async delete({ id }: Partial<Bill>): Promise<Bill> {

@@ -3,5 +3,5 @@ export default interface Bill{
     title?:string
     price:number
     date:string
-    billId:string
+    userId:string
 }

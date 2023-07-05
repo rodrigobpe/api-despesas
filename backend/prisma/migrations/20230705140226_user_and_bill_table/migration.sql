@@ -16,10 +16,10 @@ CREATE TABLE `bill` (
     `price` DOUBLE NOT NULL,
     `title` VARCHAR(100) NULL,
     `date` TIMESTAMP NOT NULL,
-    `BillId` VARCHAR(191) NOT NULL,
+    `userId` VARCHAR(191) NOT NULL,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- AddForeignKey
-ALTER TABLE `bill` ADD CONSTRAINT `bill_BillId_fkey` FOREIGN KEY (`BillId`) REFERENCES `user`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `bill` ADD CONSTRAINT `bill_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `user`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;

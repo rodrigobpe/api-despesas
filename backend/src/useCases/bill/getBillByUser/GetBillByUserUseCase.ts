@@ -6,9 +6,9 @@ import GetBillByUserDTO from "./GetBillByUserDTO";
 
 export default class GetBillByUserUseCase{
     constructor(private readonly billRepo:BillRepository){}
-    async execute({billId}:GetBillByUserDTO):Promise<Bill[] | unknown[]>{
-        const bills = await this.billRepo.getByUser({billId})
-        if(bills.length === 0)throw new AppError(HtppStatus.BAD_REQUEST,"Usuário sem contas")
+    async execute({userId}:GetBillByUserDTO):Promise<Bill[] | unknown[]>{
+        const bills = await this.billRepo.getByUser({userId})
+        if(bills.length === 0)throw new AppError(HtppStatus.NOT_FOUND,"User doesn't exists")
         return bills
     }
 }
