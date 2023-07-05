@@ -9,7 +9,7 @@ export default class CreateUserUseCase{
     constructor(private readonly userRepo:UserRepository){}
     async execute({email,isAdmin,name,password}:CreateUserDTO):Promise<User> {
         const userAlreadyExist = await this.userRepo.getByEmail({email})
-        if(userAlreadyExist){throw new AppError(HtppStatus.NOT_FOUND, 'User already exists')}
+        if(userAlreadyExist){throw new AppError(HtppStatus.BAD_REQUEST, 'User already exists')}
         const user = await this.userRepo.create({email,name,isAdmin:false,password:await helpers.hashPassword(password)})
         return user
     }
