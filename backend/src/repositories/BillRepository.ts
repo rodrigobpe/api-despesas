@@ -6,4 +6,5 @@ export default interface BillRepository{
     getAll():Promise<Bill | null>
     update({billId,date,id,price,title}:Partial<Bill>):Promise<Bill>
     delete({id}:Partial<Bill>):Promise<Bill>
+    getByUser({billId}:Partial<Bill>):Promise<Bill[] | unknown[]>
 }

@@ -3,6 +3,9 @@ import Bill from "../../entities/Bill";
 import BillRepository from "../BillRepository";
 
 export default class BillRepoPrisma implements BillRepository{
+    async getByUser({ billId }: Partial<Bill>): Promise<Bill[] | unknown[]> {
+        return await db.bill.findMany({where:{billId}})
+    }
     async create({ billId, date, price, title }: Bill): Promise<Bill | unknown> {
         return await db.bill.create({
             data:{date,price,billId,title}
