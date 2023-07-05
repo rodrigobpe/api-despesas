@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import CreateUserUseCase from "./createUserUseCase";
 import CreateUserDTO from "../createUser/createUserDTO";
+import { HtppStatus } from "../../../httpStatus";
 
 export default class CreateUserController{
     constructor(private readonly createUserUseCase:CreateUserUseCase){}
@@ -9,7 +10,7 @@ export default class CreateUserController{
         const userResponse = await this.createUserUseCase.execute({email,name,password});
         const {password:_, ...user} = userResponse
 
-        return res.status(201).json({
+        return res.status(HtppStatus.CREATED).json({
             message:"User created",
             user
         })

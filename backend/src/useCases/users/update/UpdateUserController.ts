@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import UpdateUserUseCase from "./UpdateUserUseCase";
+import { HtppStatus } from "../../../httpStatus";
 
 export default class UpdateUserController{
     constructor(private readonly updateUserUseCase:UpdateUserUseCase){}
@@ -9,7 +10,7 @@ export default class UpdateUserController{
         const updateUser = await this.updateUserUseCase.execute({id,isAdmin,name,password})
         const {password:_, ...user} = updateUser
 
-        return res.status(201).json({
+        return res.status(HtppStatus.CREATED).json({
             message:"User updated",
             user
         })
