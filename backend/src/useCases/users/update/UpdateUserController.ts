@@ -14,8 +14,8 @@ export default class UpdateUserController{
         const {password:_, ...user} = updateUser
 
         return res.status(HtppStatus.CREATED).json({
-            message:"User updated",
             status_code:HtppStatus.CREATED,
+            message:"User updated",
             user
         })
     }

@@ -11,17 +11,19 @@ export default class BillRepoPrisma implements BillRepository{
             data:{date,price,userId,title}
         })
     }
-    async getByID({ id }: Partial<Bill>): Promise<Bill> {
+    async getByID({ id }: Partial<Bill>): Promise<Bill | unknown> {
+        return await db.bill.findFirst({where:{id}})
+    }
+    async getAll(): Promise<Bill[]> {
         throw new Error("Method not implemented.");
     }
-    async getAll(): Promise<Bill> {
-        throw new Error("Method not implemented.");
+    async update({ userId, date, id, price, title }: Partial<Bill>): Promise<Bill | unknown> {
+        return await db.bill.update(
+            {data:{date,price,title}, where:{id}}
+        )
     }
-    async update({ userId, date, id, price, title }: Partial<Bill>): Promise<Bill> {
-        throw new Error("Method not implemented.");
-    }
-    async delete({ id }: Partial<Bill>): Promise<Bill> {
-        throw new Error("Method not implemented.");
+    async delete({ id }: Partial<Bill>): Promise<void> {
+        await db.bill.delete({where:{id}})
     }
 
 }

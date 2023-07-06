@@ -11,8 +11,8 @@ export default class CreateBillController{
         if(!title || !price || !date)throw new AppError(HtppStatus.BAD_REQUEST,"Body invalid")
         const bill = await this.createBillUseCase.execute({userId,date,price,title})
         return res.status(HtppStatus.CREATED).json({
-            message:"Bill created",
             status_code:HtppStatus.CREATED,
+            message:"Bill created",
             bill
         })
     }

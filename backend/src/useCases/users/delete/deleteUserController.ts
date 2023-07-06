@@ -9,7 +9,7 @@ export default class DeleteUserController{
         await this.deleteUserUseCase.execute({id})
         return res.status(HtppStatus.CREATED).json({
             status_code:HtppStatus.CREATED,
-            message: "User deleted"
+            message: `User ${id} deleted`
         })
     }
 }

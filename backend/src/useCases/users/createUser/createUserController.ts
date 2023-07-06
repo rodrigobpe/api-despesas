@@ -13,8 +13,8 @@ export default class CreateUserController{
         const {password:_, ...user} = userResponse
 
         return res.status(HtppStatus.CREATED).json({
-            message:"User created",
             status_code:HtppStatus.CREATED,
+            message:"User created",
             user
         })
     }
